@@ -12,5 +12,30 @@
  * @author bcn
  */
 class Persona {
-    //put your code here
+    
+    public $rut;
+    public $nombreCompleto;
+    
+    function __construct() {
+        
+    }
+    
+    function getRut() {
+        return $this->rut;
+    }
+
+    function getNombreCompleto() {
+        return $this->nombreCompleto;
+    }
+
+    function setRut($rut) {
+        $this->rut = $rut;
+    }
+
+    function setNombreCompleto($nombreCompleto) {
+        $this->nombreCompleto = $nombreCompleto;
+    }
+
+
+    
 }

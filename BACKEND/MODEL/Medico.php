@@ -12,5 +12,56 @@
  * @author bcn
  */
 class Medico {
-    //put your code here
+    
+    public $idMedico;
+    public $fechaContratacion;
+    public $especialidad;
+    public $vlorConsulta;
+    public $idPersona;
+    
+    function __construct() {
+        
+    }
+    function getIdMedico() {
+        return $this->idMedico;
+    }
+
+    function getFechaContratacion() {
+        return $this->fechaContratacion;
+    }
+
+    function getEspecialidad() {
+        return $this->especialidad;
+    }
+
+    function getVlorConsulta() {
+        return $this->vlorConsulta;
+    }
+
+    function getIdPersona() {
+        return $this->idPersona;
+    }
+
+    function setIdMedico($idMedico) {
+        $this->idMedico = $idMedico;
+    }
+
+    function setFechaContratacion($fechaContratacion) {
+        $this->fechaContratacion = $fechaContratacion;
+    }
+
+    function setEspecialidad($especialidad) {
+        $this->especialidad = $especialidad;
+    }
+
+    function setVlorConsulta($vlorConsulta) {
+        $this->vlorConsulta = $vlorConsulta;
+    }
+
+    function setIdPersona($idPersona) {
+        $this->idPersona = $idPersona;
+    }
+
+
+
 }

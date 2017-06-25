@@ -12,5 +12,30 @@
  * @author bcn
  */
 class Perfil {
-    //put your code here
+    
+    public $idPerfil;
+    public $nombrePerfil;
+    
+    function __construct() {
+        
+    }
+    
+    function getIdPerfil() {
+        return $this->idPerfil;
+    }
+
+    function getNombrePerfil() {
+        return $this->nombrePerfil;
+    }
+
+    function setIdPerfil($idPerfil) {
+        $this->idPerfil = $idPerfil;
+    }
+
+    function setNombrePerfil($nombrePerfil) {
+        $this->nombrePerfil = $nombrePerfil;
+    }
+
+
+    
 }

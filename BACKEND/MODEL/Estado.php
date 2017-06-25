@@ -12,5 +12,29 @@
  * @author bcn
  */
 class Estado {
-    //put your code here
+    
+    public $idEstado;
+    public $nombreEstado;
+    function __construct() {
+        
+    }
+    function getIdEstado() {
+        return $this->idEstado;
+    }
+
+    function getNombreEstado() {
+        return $this->nombreEstado;
+    }
+
+    function setIdEstado($idEstado) {
+        $this->idEstado = $idEstado;
+    }
+
+    function setNombreEstado($nombreEstado) {
+        $this->nombreEstado = $nombreEstado;
+    }
+
+
+
+    
 }

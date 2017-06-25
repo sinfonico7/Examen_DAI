@@ -12,5 +12,58 @@
  * @author bcn
  */
 class Usuario {
-    //put your code here
+   
+   public $idUsuario;
+   public $rutPersona;
+   public $nombreUsuario;
+   public $password;
+   public $idPerfil;
+   
+   function __construct() {
+       
+   }
+   
+   function getIdUsuario() {
+       return $this->idUsuario;
+   }
+
+   function getRutPersona() {
+       return $this->rutPersona;
+   }
+
+   function getNombreUsuario() {
+       return $this->nombreUsuario;
+   }
+
+   function getPassword() {
+       return $this->password;
+   }
+
+   function getIdPerfil() {
+       return $this->idPerfil;
+   }
+
+   function setIdUsuario($idUsuario) {
+       $this->idUsuario = $idUsuario;
+   }
+
+   function setRutPersona($rutPersona) {
+       $this->rutPersona = $rutPersona;
+   }
+
+   function setNombreUsuario($nombreUsuario) {
+       $this->nombreUsuario = $nombreUsuario;
+   }
+
+   function setPassword($password) {
+       $this->password = $password;
+   }
+
+   function setIdPerfil($idPerfil) {
+       $this->idPerfil = $idPerfil;
+   }
+
+
+
+   
 }
