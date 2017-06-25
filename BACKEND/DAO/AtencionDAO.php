@@ -11,6 +11,36 @@
  *
  * @author bcn
  */
+
+include_once __DIR__ . "/../MODEL/Atencion.php";
 class AtencionDAO {
-    //put your code here
+    
+    
+       private  $conexion;
+
+
+     public function __construct($conexion) {
+        $this->conexion = $conexion;
+    }
+    
+        
+    public function buscarAtencionPorId($idAtencion){
+        
+    }
+    
+    public function eliminarAtencion($idAtencion){
+        
+    } 
+    
+    public function listarAtenciones(){
+        
+    }
+    
+    public function modificarAtencion($idAtencion){
+        
+    }
+    
+    public function crearAtencion($idAtencion,$fechaHora,$pacienteID,$medicoID,$estadoID){
+        
+    }
 }

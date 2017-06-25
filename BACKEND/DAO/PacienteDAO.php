@@ -11,6 +11,36 @@
  *
  * @author bcn
  */
+include_once __DIR__ . "/../MODEL/Paciente.php";
 class PacienteDAO {
-    //put your code here
+    
+        
+       private  $conexion;
+
+
+     public function __construct($conexion) {
+        $this->conexion = $conexion;
+    }
+    
+    
+    public function buscarPacientePorId($idPaciente){
+        
+    }
+    
+    public function eliminarPaciente($idPaciente){
+        
+    } 
+    
+    public function listarPacientes(){
+        
+    }
+    
+    public function modificarPaciente($idPaciente){
+        
+    }
+    
+    public function crearPaciente($idPaciente,$fechaNacimiento,$sexo,$direccion,$telefono,$personaID){
+        
+    }
+    
 }

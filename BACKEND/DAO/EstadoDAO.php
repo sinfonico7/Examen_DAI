@@ -11,6 +11,34 @@
  *
  * @author bcn
  */
+include_once __DIR__ . "/../MODEL/Estado.php";
 class EstadoDAO {
-    //put your code here
+        
+       private  $conexion;
+
+
+     public function __construct($conexion) {
+        $this->conexion = $conexion;
+    }
+    
+    
+    public function buscarEstadoPorId($idEstado){
+        
+    }
+    
+    public function eliminarEstado($idEstado){
+        
+    } 
+    
+    public function listarEstados(){
+        
+    }
+    
+    public function modificarEstado($idEstado){
+        
+    }
+    
+    public function crearEtado($idEstado,$nombreEstado){
+        
+    }
 }
