@@ -98,9 +98,13 @@ class PerfilDAO {
         
     }
     
-    public function crearPerfil($idPerfil,$nombrePerfil){
+    public function crearPerfil($registro){
         
                 
+        
+       
+        $idPerfil = $registro->getIdPerfil();
+        $nombrePerfil = $registro->getNombrePerfil();
         
         $sentencia = $this->conexion->prepare("
             insert 

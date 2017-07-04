@@ -1,16 +1,53 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
+include_once __DIR__."/../DATA/DBConnection.php";
+include_once __DIR__."/../DAO/PersonaDAO.php";
 /**
  * Description of PersonaController
  *
  * @author bcn
  */
 class PersonaController {
-    //put your code here
+    
+    
+    public static function listarPersonasRegistradas(){
+        $conexion = DBConnection::getConexion();
+        $daoPersona = new PersonaDAO($conexion);
+        
+        return $daoPersona->listarPersonas();
+        
+        
+    }
+    
+    public static function registrarPersona ($rut,$nombreCompleto ){
+        
+    //validar que los datos sean validos
+        
+    if (is_string($rut&&  strlen($rut)>1&&  is_string($nombreCompleto)&&  strlen($nombreCompleto))) {
+        $persona = new Persona();
+        $persona = setRut($rut);
+        $persona = setNombreCompleto($nombreCompleto);
+        
+        $conexion = DBConnection::getConexion();
+        $daoPersona = new PersonaDAO($conexion);
+        
+        return $daoPersona->crearPersona($persona);
+    }else echo 'No agregado';
+    
+    }
+    
+    
+    public static function EliminarPersona ($rut){
+        $persona = new Persona();
+        
+        $persona ->setRut($rut);
+        
+        
+        $conexion = DBConnection::getConexion();
+        $daoPersona = new PersonaDAO($conexion);
+        return $daoPersona ->eliminarPersona($persona);
+        
+    }
+    
+    
 }

@@ -90,7 +90,7 @@ class PersonaDAO {
         
     }
     
-    public function crearPersona($rutPersona,$nombreCompleto){
+    public function crearPersona($registro){
         
         
                  /* @var $usuario Usuario */
@@ -100,6 +100,9 @@ class PersonaDAO {
             into persona 
             values(:nombreCompleto,:rutPersona)"
                 );
+        
+        $rutPersona = $registro->getRut();
+        $nombreCompleto = $registro->getNombreCompleto();
         
         
         $sentencia->bindParam(':rutPersona', $rutPersona);
