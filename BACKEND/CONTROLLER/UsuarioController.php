@@ -20,10 +20,10 @@ class UsuarioCOntroller {
         }
         
         $usuario = new Usuario();        
-        $usuario->idUsuario($idUsuario);
-        $usuario->rutPersona($rutPersona);
-        $usuario->nombreUsuario($nombreUsuario);
-        $usuario->idPerfil($idPerfil);
+        $usuario->setIdUsuario($idUsuario);
+        $usuario->setRutPersona($rutPersona);
+        $usuario->setNombreUsuario($nombreUsuario);
+        $usuario->setIdPerfil($idPerfil);
         
         $hash = password_hash($password, PASSWORD_BCRYPT);
         $usuario->setPassword($hash);
@@ -31,7 +31,7 @@ class UsuarioCOntroller {
         $conexion = ConexionDB::getConexion();
         $daoUsuario= new UsuarioDAO($conexion);
         
-        return $crearUsuario->agregar($usuario); 
+        return $daoUsuario->crearUsuario($usuario); 
           
     }
     public static function validarUsuarioClave ($idUsuario,$password){

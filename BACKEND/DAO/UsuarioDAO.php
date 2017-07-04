@@ -98,9 +98,10 @@ class UsuarioDAO {
         
     }
     
-    public function crearUsuario($idUsuario,$rutPersona,$nombreUsuario,$password,$idPerfil){
+    public function crearUsuario($nuevoUsuario){
         
                  /* @var $usuario Usuario */
+        $usuario = $nuevoUsuario;
         
         $sentencia = $this->conexion->prepare("
             insert 
@@ -109,11 +110,11 @@ class UsuarioDAO {
                 );
         
         
-        $sentencia->bindParam(':perfil', $idPerfil);
-        $sentencia->bindParam(':persona', $rutPersona);
-        $sentencia->bindParam(':usuario', $idUsuario);
-        $sentencia->bindParam(':nombre', $nombreUsuario);
-        $sentencia->bindParam(':pass', $password);
+        $sentencia->bindParam(':perfil', $usuario->getIdPerfil());
+        $sentencia->bindParam(':persona', $usuario->getRutPersona());
+        $sentencia->bindParam(':usuario', $usuario->getIdUsuario());
+        $sentencia->bindParam(':nombre', $usuario->getNombreUsuario());
+        $sentencia->bindParam(':pass', $usuario->getPassword());
         
         $sentencia->execute();
         

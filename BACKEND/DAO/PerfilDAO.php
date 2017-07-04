@@ -29,12 +29,7 @@ class PerfilDAO {
         /* @var $perfil Usuario */
         $perfil = null;
 
-        $sentencia = $this->conexion->prepare("
-            select 
-            *
-            from perfiles 
-            where ID_Perfil= :id_perfil"
-             );
+        $sentencia = $this->conexion->prepare("select * from perfiles where ID_Perfil= :id_perfil");
         
         $persona_id = $idPerfil;
         $sentencia->bindParam(':id_perfil', $persona_id);
@@ -55,7 +50,7 @@ class PerfilDAO {
     
     public function eliminarPerfil($idPerfil){
         
-          /* @var $usuario Usuario */
+       
         
         $perfil = $this->conexion->prepare("
             delete 
@@ -105,7 +100,7 @@ class PerfilDAO {
     
     public function crearPerfil($idPerfil,$nombrePerfil){
         
-                 /* @var $usuario Usuario */
+                
         
         $sentencia = $this->conexion->prepare("
             insert 

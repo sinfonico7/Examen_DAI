@@ -5,9 +5,30 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <?php
+        
+        session_start();
         include_once __DIR__."/../../BACKEND/DATA/DBConnection.php";
+        include_once __DIR__ . "/../../BACKEND/CONTROLLER/UsuarioCOntroller.php";
         $creadorDB = new DBConnection();
         $creadorDB->getConexion();
+        
+        if ($_SERVER["REQUEST_METHOD"]=="POST") {
+                
+            if (isset($_POST["usuario"]) && isset($_POST["contrasena"])) {
+                
+                $idUsuario = $_POST["usuario"];
+                $password  = $_POST["contrasena"];      
+                
+                $exito = UsuarioCOntroller::validarUsuarioClave($idUsuario, $password);
+                if ($exito) {
+                    echo 'Usuario validado';
+                }
+                
+            }
+} else {
+    echo 'Estas intentando ejecutar sin un metodo POST';
+    }
+        
         ?>
 <html>
     <head>
@@ -17,7 +38,7 @@ and open the template in the editor.
     <body>
         
         <div>
-	        <form method="POST" action="#">
+            <form method="POST" action="index.php">
 	        	<fieldset>
                             <legend>Login</legend>
 	        		<input type="text" name="usuario">
