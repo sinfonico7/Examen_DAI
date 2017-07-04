@@ -111,32 +111,5 @@ class PersonaDAO {
         
         $sentencia->execute();
         
-        
-        /*
-         En el anterior ingresa un registro.
-        
-        $query = "INSERT INTO persona (rut,nombre,apellido,fecha_nacimiento, email) VALUES (CAST(:rut_numero AS SIGNED INTEGER), :nombre, :apellido, date_format(:fecha_nacimiento,'%Y-%m-%d-'), :email) ";
-        
-        $sentencia = $this->conexion->prepare($query);
-        
-        $rut = $registro->getRut();
-        $nombre = $registro->getNombre();
-        $apellido = $registro->getApellido();
-        $fechaNacimiento = $registro->getFechaNacimiento();
-        $email = $registro->getEmail();
-        
-        $rut_numero = (int)$rut;
-        
-        //$sentencia->bindParam(':rut', $rut);
-        $sentencia->bindParam(':rut_numero', $rut_numero);
-        $sentencia->bindParam(':nombre', $nombre);
-        $sentencia->bindParam(':apellido', $apellido);
-        $sentencia->bindParam(':fecha_nacimiento', $fechaNacimiento);
-        $sentencia->bindParam(':email', $email);        
-              
-        return $sentencia->execute();
-         
-         */
-        
     }
 }

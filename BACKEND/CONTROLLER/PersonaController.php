@@ -37,4 +37,17 @@ class PersonaController {
     }
     
     
+    public static function EliminarPersona ($rut){
+        $persona = new Persona();
+        
+        $persona ->setRut($rut);
+        
+        
+        $conexion = DBConnection::getConexion();
+        $daoPersona = new PersonaDAO($conexion);
+        return $daoPersona ->eliminarPersona($persona);
+        
+    }
+    
+    
 }
