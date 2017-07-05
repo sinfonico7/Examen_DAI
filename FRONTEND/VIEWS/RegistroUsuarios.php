@@ -14,7 +14,8 @@ and open the template in the editor.
         
         session_start();
         
-        include_once __DIR__ . "/../../BACKEND/CONTROLLER/UsuarioCOntroller.php";;
+        include_once __DIR__ . "/../../BACKEND/CONTROLLER/UsuarioCOntroller.php";
+        include_once __DIR__ . "/../../BACKEND/CONTROLLER/PerfilController.php";
         
         if($_SERVER["REQUEST_METHOD"] == "POST") {
     if(isset($_POST["id_user"]) && isset($_POST["rut_number"]) &&   
@@ -62,8 +63,25 @@ and open the template in the editor.
         	
         	<p>Perfil</p>
                 <select id="select_perfil" name="select_perfil" required>
-        		<option>Seleccione un  Perfil</option>
+                    <option>Seleccione un  Perfil</option>
+                    <?php 
+                            /* @var $value */
+                            $lista = PerfilController::listarPerfiles();
+                            foreach ($lista as $value) {
+                                
+                                 echo '<option>' . $value->getNombrePerfil() . '</option>';
+                                
+                            }
+                    
+                    ?>
+                    
+                    
         	</select>
+                <br>
+                
+                  
+                
+                <input type="submit" value="Agregar Usuario">
             </form>
             </fieldset>
         </div>
