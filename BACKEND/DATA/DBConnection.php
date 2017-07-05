@@ -132,7 +132,7 @@ class DBConnection {
   `ID_Usuario` int(11) NOT NULL,
   `ID_Persona` int(11) NOT NULL,
   `Nombre_User` varchar(40) NOT NULL,
-  `Password` varchar(40) NOT NULL,
+  `Password` varchar(60) NOT NULL,
   `ID_Perfil` int(11) NOT NULL,
   PRIMARY KEY (`ID_Usuario`),
   KEY `ID_Perfil` (`ID_Perfil`),
