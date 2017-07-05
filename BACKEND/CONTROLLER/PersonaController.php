@@ -23,7 +23,7 @@ class PersonaController {
         
     //validar que los datos sean validos
         
-    if (is_string($rut&&  strlen($rut)>1&&  is_string($nombreCompleto)&&  strlen($nombreCompleto))) {
+    if (is_string($rut)&&  strlen($rut)>1&&  is_string($nombreCompleto)&&  strlen($nombreCompleto)) {
         $persona = new Persona();
         $persona = setRut($rut);
         $persona = setNombreCompleto($nombreCompleto);
