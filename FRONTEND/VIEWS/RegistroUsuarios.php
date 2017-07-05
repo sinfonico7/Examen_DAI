@@ -16,17 +16,18 @@ and open the template in the editor.
         
         include_once __DIR__ . "/../../BACKEND/CONTROLLER/UsuarioCOntroller.php";
         include_once __DIR__ . "/../../BACKEND/CONTROLLER/PerfilController.php";
+        include_once __DIR__."/../../BACKEND/DATA/DBConnection.php";
         
         if($_SERVER["REQUEST_METHOD"] == "POST") {
-    if(isset($_POST["id_user"]) && isset($_POST["rut_number"]) &&   
+    if(isset($_POST["rut_number"]) &&   
        isset($_POST["nombre_usuario"]) && isset($_POST["contrasena"]) &&
        isset($_POST["contrasena_2"])&& isset($_POST["select_perfil"])) {
 
-       $exito = UsuarioCOntroller::registrarUsuarios($_POST["id_user"], 
+       $exito = UsuarioCOntroller::registrarUsuarios(
                                                     $_POST["rut_number"], 
                                                     $_POST["nombre_usuario"], 
                                                     $_POST["contrasena"], 
-                                                    $_POST["contrsena_2"],
+                                                    $_POST["contrasena_2"],
                                                     $_POST["select_perfil"]);
        
        if($exito) {
@@ -44,9 +45,7 @@ and open the template in the editor.
             <fieldset>
             <legend>Registro de Usuarios</legend>
             <form method="POST" action="RegistroUsuarios.php">
-        	<p>ID de Usuario</p>
-        	<input type="number" name="id_user" required>
-        	
+        	       	
         	<p>Rut Persona</p>
         	<input type="number" name="rut_number" required>
         	

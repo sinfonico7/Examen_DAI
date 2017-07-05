@@ -11,7 +11,7 @@ include_once __DIR__."/../DAO/UsuarioDAO.php";
 class UsuarioCOntroller {
     
     
-    public static function registrarUsuarios ($idUsuario,$rutPersona,$nombreUsuario, $password, $confirmacionPassword, $idPerfil){
+    public static function registrarUsuarios ($rutPersona,$nombreUsuario, $password, $confirmacionPassword, $idPerfil){
         
     
         // validar que los datos sean válidos
@@ -20,7 +20,7 @@ class UsuarioCOntroller {
         }
         
         $usuario = new Usuario();        
-        $usuario->setIdUsuario($idUsuario);
+        $usuario->setIdUsuario("");
         $usuario->setRutPersona($rutPersona);
         $usuario->setNombreUsuario($nombreUsuario);
         $usuario->setIdPerfil($idPerfil);
@@ -28,7 +28,7 @@ class UsuarioCOntroller {
         $hash = password_hash($password, PASSWORD_BCRYPT);
         $usuario->setPassword($hash);
         
-        $conexion = ConexionDB::getConexion();
+        $conexion = DBConnection::getConexion();
         $daoUsuario= new UsuarioDAO($conexion);
         
         return $daoUsuario->crearUsuario($usuario); 

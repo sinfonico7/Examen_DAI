@@ -100,21 +100,23 @@ class UsuarioDAO {
     
     public function crearUsuario($nuevoUsuario){
         
-                 /* @var $usuario Usuario */
+                 /* @var $nuevoUsuario Usuario */
         $usuario = $nuevoUsuario;
+        $perfil = $usuario->getIdPerfil();
+        $rut = $usuario->getRutPersona();
+        $nombre = $usuario->getNombreUsuario();
+        $pass = $usuario->getPassword();
         
         $sentencia = $this->conexion->prepare("
-            insert 
-            into usuario 
-            values(:perfil,:persona,:usuario,:nombre,:pass)"
+            insert into usuario (ID_Perfil,ID_Persona,Nombre_User,PASSWORD) 
+            values((SELECT ID_Perfil from perfiles WHERE Nombre_Perfil = :perfil),:persona,:nombre,:pass)"
                 );
         
         
-        $sentencia->bindParam(':perfil', $usuario->getIdPerfil());
-        $sentencia->bindParam(':persona', $usuario->getRutPersona());
-        $sentencia->bindParam(':usuario', $usuario->getIdUsuario());
-        $sentencia->bindParam(':nombre', $usuario->getNombreUsuario());
-        $sentencia->bindParam(':pass', $usuario->getPassword());
+        $sentencia->bindParam(':perfil', $perfil);
+        $sentencia->bindParam(':persona',$rut);
+        $sentencia->bindParam(':nombre', $nombre);
+        $sentencia->bindParam(':pass', $pass);
         
         $sentencia->execute();
         
