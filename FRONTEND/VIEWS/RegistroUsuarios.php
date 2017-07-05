@@ -23,19 +23,21 @@ and open the template in the editor.
        isset($_POST["nombre_usuario"]) && isset($_POST["contrasena"]) &&
        isset($_POST["contrasena_2"])&& isset($_POST["select_perfil"])) {
 
-       $exito = UsuarioCOntroller::registrarUsuarios(
+       
+       
+       
+           try {
+               UsuarioCOntroller::registrarUsuarios(
                                                     $_POST["rut_number"], 
                                                     $_POST["nombre_usuario"], 
                                                     $_POST["contrasena"], 
                                                     $_POST["contrasena_2"],
                                                     $_POST["select_perfil"]);
-       
-       if($exito) {
-           echo 'Usuario registrado';
+           } catch (Exception $ex) {
+               echo $ex->getMessage();
+           }
            
-       }  else {
-           echo "Persona no registrada";
-       }
+      
     }  
 }
         
