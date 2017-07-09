@@ -24,20 +24,20 @@ and open the template in the editor.
                 if ($usuario!=null) {
                     
                     switch ($_SESSION["perfil_sesion"]) {
-                        case "director":
+                        case "1":
                             
                             header("location: ZonaDirector.php");
 
                             break;
-                        case "administrador":
+                        case "2":
                             header("location: ZonaAdministrador.php");
 
                             break;
-                        case "secretaria":
+                        case "3":
                             header("location: ZonaSecretaria.php");
 
                             break;
-                        case "paciente":
+                        case "4":
                             header("location: ZonaPaciente.php");
 
                             break;
