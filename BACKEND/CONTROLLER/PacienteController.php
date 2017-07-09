@@ -20,13 +20,14 @@ class PacienteController {
     }
     public static function registrarPacientes($fechaNacimiento,$sexo,$direccion,$telefono,$personaID){
         if (is_string($sexo)&&  is_string($direccion)&&is_string($telefono)&&  is_string($personaID)) {
+            $aux= substr($personaID,0,-2);
             $paciente = new Paciente();
             $paciente->setPacienteID("");
             $paciente->setFechaNacimiento($fechaNacimiento);
             $paciente->setSexo($sexo);
             $paciente->setDireccion($direccion);
             $paciente->setTelefono($telefono);
-            $paciente->setPersonaID($personaID);
+            $paciente->setPersonaID($aux);
             
             $conexion = DBConnection::getConexion();
             $daoPaciente = new PacienteDAO($conexion);

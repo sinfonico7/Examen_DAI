@@ -17,7 +17,8 @@ and open the template in the editor.
             if (isset($_POST["usuario"]) && isset($_POST["contrasena"])) {
                 
                 $idUsuario = $_POST["usuario"];
-                $password  = $_POST["contrasena"];      
+                $password  = $_POST["contrasena"];   
+                
                 
                 $usuario = UsuarioCOntroller::validarUsuarioClave($idUsuario, $password);
                 
