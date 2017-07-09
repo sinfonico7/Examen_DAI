@@ -8,6 +8,7 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
         <title></title>
+        <script src="../JS/Script.js" type="text/javascript"></script>
     </head>
     <body>
         <?php
@@ -49,7 +50,7 @@ and open the template in the editor.
             <form method="POST" action="RegistroUsuarios.php">
         	       	
         	<p>Rut Persona</p>
-        	<input type="number" name="rut_number" required>
+        	<input type="number" name="rut_number" required oninput="checkRut(this)">
         	
         	<p>Nombre Usuario</p>
         	<input type="text" name="nombre_usuario" required>
