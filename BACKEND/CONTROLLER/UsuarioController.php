@@ -59,7 +59,15 @@ class UsuarioCOntroller {
                
     }
     
-    
+    public static function ListarUsuarios() {
+        
+        /*@var $usuarios Array*/
+        $conexion = DBConnection::getConexion();
+        $usuarioDAO = new UsuarioDAO($conexion);
+        return $usuarios = $usuarioDAO->listarUsuarios();
+       
+        
+    }
     
     
 }

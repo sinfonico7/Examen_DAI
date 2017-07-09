@@ -32,6 +32,26 @@ class EstadoDAO {
     
     public function listarEstados(){
         
+         /* @var $estado Estado */
+        
+        $estado = null;
+        $estados = array();
+
+        $sentencia = $this->conexion->prepare("select * from estados_atencion");
+        
+        $sentencia->execute();
+              
+        while($registro = $sentencia->fetch()) {            
+            $estado = new Estado();
+            $estado->setIdEstado($registro["EstadoID"]);
+            $estado->setNombreEstado($registro["Nombre_Estado"]);
+            
+            array_push($estados, $estado);
+   
+        }
+        
+        return $estados;
+        
     }
     
     public function modificarEstado($idEstado){

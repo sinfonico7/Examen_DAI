@@ -14,8 +14,9 @@ class PacienteController {
     public static function listarPacientesRegistrados(){
         $conexion = DBConnection::getConexion();
         $daoPaciente = new PacienteDAO($conexion);
+        $pacientes = $daoPaciente->listarPacientes();
         
-        return $daoPaciente->listarPacientes();
+        return $pacientes;
     }
     public static function registrarPacientes($fechaNacimiento,$sexo,$direccion,$telefono,$personaID){
         if (is_string($sexo)&&  is_string($direccion)&&is_string($telefono)&&  is_string($personaID)) {

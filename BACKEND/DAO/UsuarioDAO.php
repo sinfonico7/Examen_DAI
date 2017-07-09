@@ -1,11 +1,25 @@
 <?php
 
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ * Description of UsuarioDAO
+ *
+ * @author bcn
+ */
+
+
 include_once __DIR__ . "/../MODEL/Usuario.php";
+
 
 
 class UsuarioDAO {
     
-    private  $conexion;
+    private $conexion;
 
 
      public function __construct($conexion) {
@@ -66,16 +80,11 @@ class UsuarioDAO {
     public function listarUsuarios(){
         
          /* @var $usuario Usuario */
+        
         $usuario = null;
         $usuarios = array();
 
-        $sentencia = $this->conexion->prepare("
-            select 
-            *
-            from usuario 
-            ");
-        
-        
+        $sentencia = $this->conexion->prepare("select * from usuario");
         
         $sentencia->execute();
               

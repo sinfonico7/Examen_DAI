@@ -81,24 +81,17 @@ class PersonaDAO {
     
     public function listarPersonas(){
         
-         /* @var $persona Usuario */
+         /* @var $persona Persona */
         $persona = null;
         $personas = array();
 
-        $sentencia = $this->conexion->prepare("
-            select 
-            *
-            from persona 
-            ");
-        
-        $persona_id = $idUsuario;
-        $sentencia->bindParam(':usuario_id', $persona_id);
-        
+        $sentencia = $this->conexion->prepare("select * from persona");
+                       
         $sentencia->execute();
               
         while($registro = $sentencia->fetch()) {            
             $persona = new Persona();
-            $persona->setIdPerfil($registro["Nombre_Completo"]);
+            $persona->setNombreCompleto($registro["Nombre_Completo"]);
             $persona->setRutPersona($registro["RutPersona"]);
       
             array_push($personas, $persona);

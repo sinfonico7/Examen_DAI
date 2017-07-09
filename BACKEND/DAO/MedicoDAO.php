@@ -32,6 +32,23 @@ class MedicoDAO {
     
     public function listarMedicos(){
         
+        $medicos = array();
+        
+        $sentencia = $this->conexion->prepare("select * from medico");
+        $sentencia->execute();
+        
+        while ($registro = $sentencia->fetch()) {
+            $medico = new Medico();
+            $medico->setIdMedico($registro["MedicoId"]);
+            $medico->setEspecialidad($registro["id_especilidad"]);
+            $medico->setFechaContratacion($registro["Fecha_Contratacion"]);
+            $medico->setIdPersona($registro["ID_Persona"]);
+            $medico->setVlorConsulta($registro["Valor_Consulta"]);
+            
+            
+            array_push($medicos, $medico);
+        }
+        return $medicos;
     }
     
     public function modificarMedico($idMedico){

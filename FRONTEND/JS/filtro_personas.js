@@ -11,7 +11,9 @@ function (){
         var resultado = respuesta; 
          
         if(resultado==='true'){
-            alert('Persona Existe en BD');
+            if (confirm('Persona ya existe en nuestros registros,')) {
+                return false;
+            } 
             
         }else{
             if (confirm('Persona no existe en nuestros registros primero debe ser enrolado, desea hacerlo?')) {

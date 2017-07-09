@@ -59,19 +59,20 @@ class PacienteDAO {
     } 
     
     public function listarPacientes(){
-        $paciente = null;
+        
         $pacientes = array();
         
         $sentencia = $this->conexion->prepare("select * from paciente");
-    
+        $sentencia->execute();
+        
         while ($registro = $sentencia->fetch()) {
             $paciente = new Paciente();
-            $paciente->setPacienteID($registro["pacienteID"]);
-            $paciente->setFechaNacimiento($registro["fechaNacimiento"]);
-            $paciente->setSexo($registro["sexo"]);
-            $paciente->setDireccion($registro["direccion"]);
-            $paciente->setTelefono($registro["telefono"]);
-            $paciente->setPersonaID($registro["personaID"]);
+            $paciente->setPacienteID($registro["PacienteID"]);
+            $paciente->setFechaNacimiento($registro["Fecha_Nacimiento"]);
+            $paciente->setSexo($registro["Sexo"]);
+            $paciente->setDireccion($registro["Direccion"]);
+            $paciente->setTelefono($registro["Telefono"]);
+            $paciente->setPersonaID($registro["ID_Persona"]);
             
             array_push($pacientes, $paciente);
         }
