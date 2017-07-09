@@ -22,12 +22,12 @@ class AtencionController {
         return $atenciones;
     }
     
-    public static function agregarAtencion($Estado_ID,$Fecha_Atencion,$ID_Atencion,$Medico_ID,$Paciente_ID) {
+    public static function agregarAtencion($Estado_ID,$Fecha_Atencion,$Medico_ID,$Paciente_ID) {
         
         $conexion = DBConnection::getConexion();
         $daoAtencion = new AtencionDAO($conexion);
         
-        $daoAtencion->crearAtencion($Estado_ID, $Fecha_Atencion, $ID_Atencion, $Medico_ID, $Paciente_ID);
+        $daoAtencion->crearAtencion($Estado_ID, $Fecha_Atencion, $Medico_ID, $Paciente_ID);
         
     }
     //put your code here

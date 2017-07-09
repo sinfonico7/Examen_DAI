@@ -82,15 +82,14 @@ class AtencionDAO {
         
     }
     
-    public function crearAtencion($Estado_ID,$Fecha_Atencion,$ID_Atencion,$Medico_ID,$Paciente_ID){
+    public function crearAtencion($Estado_ID,$Fecha_Atencion,$Medico_ID,$Paciente_ID){
         
         
-         $sentencia = $this->conexion->prepare("insert into atencion values(:estado_id,:fecha_atencion,:id_atencion,:medico_id,:paciente_id)");
+         $sentencia = $this->conexion->prepare("insert into atencion (Estado_ID,Fecha_Atencion,Medico_ID,Paciente_ID) values((SELECT EstadoID from estados_atencion where Nombre_Estado = :estado_id),:fecha_atencion,:medico_id,:paciente_id)");
         
         
         $sentencia->bindParam(':estado_id', $Estado_ID);
         $sentencia->bindParam(':fecha_atencion', $Fecha_Atencion);
-        $sentencia->bindParam(':id_atencion', $ID_Atencion);
         $sentencia->bindParam(':medico_id', $Medico_ID);
         $sentencia->bindParam(':paciente_id', $Paciente_ID);
         
