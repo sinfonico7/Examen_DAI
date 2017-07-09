@@ -84,20 +84,17 @@ class PacienteDAO {
     
     public function crearPaciente($registro){
         
+        /* @var $registro Paciente*/
        
-        $sentencia = $this->conexion->prepare
-                ("insert into paciente 
-                values (:idPaciente,:fechaNacimiento,:sexo,:direccion,:telefono,:personaID)"
-                
-                );
-         $idPaciente = $registro->getPacienteID();
+        $sentencia = $this->conexion->prepare("insert into paciente (Direccion,Fecha_Nacimiento,ID_Persona,Sexo,Telefono) values (:direccion,:fechaNacimiento,:personaID,:sexo,:telefono)");
+        
          $fechaNacimiento = $registro->getFechaNacimiento();
          $sexo = $registro->getSexo();
          $direccion = $registro->getDireccion();
          $telefono = $registro->getTelefono();
          $personaID = $registro->getPersonaID();
          
-        $sentencia->bindParam(':idPaciente', $idPaciente);
+        
         $sentencia->bindParam(':fechaNacimiento', $fechaNacimiento);
         $sentencia->bindParam(':sexo', $sexo);
         $sentencia->bindParam(':direccion', $direccion);

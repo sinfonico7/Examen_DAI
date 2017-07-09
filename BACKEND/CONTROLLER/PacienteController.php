@@ -17,21 +17,21 @@ class PacienteController {
         
         return $daoPaciente->listarPacientes();
     }
-    public static function registrarPacientes($pacienteID,$fechaNacimiento,$sexo,$direccion,$telefono,$personaID){
-        if (is_string($pacienteID)&&  strlen($pacienteID)>0&&  is_string($sexo)&&  is_string($direccion)&&is_string($telefono)&&  is_string($personaID)) {
+    public static function registrarPacientes($fechaNacimiento,$sexo,$direccion,$telefono,$personaID){
+        if (is_string($sexo)&&  is_string($direccion)&&is_string($telefono)&&  is_string($personaID)) {
             $paciente = new Paciente();
-            $paciente = setPacienteID($pacienteID);
-            $paciente = setFechaNacimiento($fechaNacimiento);
-            $paciente = setSexo($sexo);
-            $paciente = setDireccion($direccion);
-            $paciente = setTelefono($telefono);
-            $paciente = setPersonaID($personaID);
+            $paciente->setPacienteID("");
+            $paciente->setFechaNacimiento($fechaNacimiento);
+            $paciente->setSexo($sexo);
+            $paciente->setDireccion($direccion);
+            $paciente->setTelefono($telefono);
+            $paciente->setPersonaID($personaID);
             
             $conexion = DBConnection::getConexion();
             $daoPaciente = new PacienteDAO($conexion);
             
             return $daoPaciente->crearPaciente($paciente);  
-        } else echo 'No agregado';
+        } else{ echo 'No agregado';}
         
     }
     public static function EliminarPaciente ($pacienteID){

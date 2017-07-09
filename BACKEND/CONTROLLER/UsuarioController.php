@@ -37,20 +37,26 @@ class UsuarioCOntroller {
     public static function validarUsuarioClave ($idUsuario,$password){
         
         $conexion = DBConnection::getConexion();
-        $usuarioDAO = new UsuarioDAO($conexion);
+        $daoUsuario= new UsuarioDAO($conexion);
         
-        $usuario = $usuarioDAO->buscarUsuarioPorId($idUsuario);
-        if($usuario == null){
+        $usuario = $daoUsuario->buscarUsuarioPorId($idUsuario);
+        
+        if($usuario == null)  {
             return false;
         }
-        if (password_verify($password, $usuario->getPassword())) {
-            $_SESSION["usuario"] = $usuario->getIdUsuario();
+        
+        
+        if(password_verify($password, $usuario->getPassword())) {
+            $_SESSION["rut_sesion"] = $usuario->getRutPersona();
+            $_SESSION["perfil_sesion"] = $usuario->getIdPerfil();
             return true;
-            
+        }else{
+            return false;
         }
-        return false;
         
         
+          
+               
     }
     
     

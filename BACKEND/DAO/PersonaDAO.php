@@ -10,6 +10,29 @@ class PersonaDAO {
         $this->conexion = $conexion;
     }
     
+    public function validarPersona($idPersona) {
+        /*@var $idPersona string */
+        
+        try{
+            $sentencia = $this->conexion->prepare("select * from persona where RutPersona= :persona_id");
+        
+            $persona_id = $idPersona;
+            $sentencia->bindParam(':persona_id', $persona_id);
+            $sentencia->execute();
+           
+            while($registro = $sentencia->fetch()) {            
+                return true;
+            }
+            return false;
+            
+        } catch (mysqli_sql_exception $ex){
+            echo $ex->getMessage();
+            
+        } 
+     
+        
+        
+    }
     
     public function buscarPersonaPorId($idPersona){
         
@@ -93,7 +116,7 @@ class PersonaDAO {
     public function crearPersona($registro){
         
         
-                 /* @var $usuario Usuario */
+                 /* @var $registro Persona */
         
         $sentencia = $this->conexion->prepare("
             insert 

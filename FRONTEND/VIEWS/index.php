@@ -19,9 +19,37 @@ and open the template in the editor.
                 $idUsuario = $_POST["usuario"];
                 $password  = $_POST["contrasena"];      
                 
-                $exito = UsuarioCOntroller::validarUsuarioClave($idUsuario, $password);
-                if ($exito) {
-                    echo 'Usuario validado';
+                $usuario = UsuarioCOntroller::validarUsuarioClave($idUsuario, $password);
+                
+                if ($usuario!=null) {
+                    
+                    switch ($_SESSION["perfil_sesion"]) {
+                        case "director":
+                            
+                            header("location: ZonaDirector.php");
+
+                            break;
+                        case "administrador":
+                            header("location: ZonaAdministrador.php");
+
+                            break;
+                        case "secretaria":
+                            header("location: ZonaSecretaria.php");
+
+                            break;
+                        case "paciente":
+                            header("location: ZonaPaciente.php");
+
+                            break;
+
+                        default:
+                            break;
+                    }
+                    
+                    
+                    
+                } else {
+                    echo 'Usuario invalido';
                 }
                 
             }

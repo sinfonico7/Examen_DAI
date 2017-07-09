@@ -21,7 +21,7 @@ class UsuarioDAO {
             select 
             *
             from usuario 
-            where persona_id= :usuario_id"
+            where Nombre_User= :usuario_id"
              );
         
         $persona_id = $idUsuario;
@@ -94,6 +94,11 @@ class UsuarioDAO {
         
     }
     
+ 
+
+
+
+
     public function modificarUsuario($idUsuario){
         
     }

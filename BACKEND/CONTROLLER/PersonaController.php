@@ -19,6 +19,19 @@ class PersonaController {
         
     }
     
+    public static function validarPersona($rut) {
+        
+        $conexion = DBConnection::getConexion();
+        $daoPersona = new PersonaDAO($conexion);
+        
+        /* @var $rut string */
+        /* @var $resultado boolean */
+        $resultado = $daoPersona->validarPersona($rut);
+        return $resultado;
+        
+        
+    }
+    
     public static function registrarPersona ($rut,$nombreCompleto ){
         
     //validar que los datos sean validos
@@ -32,7 +45,9 @@ class PersonaController {
         $daoPersona = new PersonaDAO($conexion);
         
         return $daoPersona->crearPersona($persona);
-    }else echo 'No agregado';
+    }else{
+      echo 'No agregado';  
+    } 
     
     }
     
