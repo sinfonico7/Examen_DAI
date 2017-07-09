@@ -18,7 +18,7 @@ class UsuarioCOntroller {
         if ($password != $confirmacionPassword) {
             return false;
         }
-        $aux= substr($rutPersona,0,-2);
+        $aux=substr($rutPersona,0,-2);
         $usuario = new Usuario();        
         $usuario->setIdUsuario("");
         $usuario->setRutPersona($aux);
