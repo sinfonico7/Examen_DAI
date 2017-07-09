@@ -44,7 +44,7 @@ and open the template in the editor.
             <form method="POST" action="RegistroPaciente.php" >
                 
                         <p>Rut Peciente</p>        
-                        <input type="number" name="rut" required oninput="checkRut(this)">
+                        <input type="text" name="rut" required oninput="checkRut(this)">
 
                         <p>Fecha de Nacimiento</p>
                         <input type="date" name="fecha" required>
