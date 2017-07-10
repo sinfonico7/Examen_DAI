@@ -30,5 +30,16 @@ class AtencionController {
         $daoAtencion->crearAtencion($Estado_ID, $Fecha_Atencion, $Medico_ID, $Paciente_ID);
         
     }
+    
+    
+    public static function getAtencionJSON($idAtencion) {
+        $conexion = DBConnection::getConexion();
+        $daoAtencion = new AtencionDAO($conexion);
+        
+        $atencion = $daoAtencion->getAtencionJSON($idAtencion);
+        
+        return $atencion;
+    }
+    
     //put your code here
 }

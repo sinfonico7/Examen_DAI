@@ -22,4 +22,16 @@ class MedicoController {
         
         return $medicos;
     }
+    
+    public static function agregarMedico($fechaContratacion,$especialidad,$valorConsulta,$PersonaID) {
+        
+        $conexion = DBConnection::getConexion();
+        $daoMedico = new MedicoDAO($conexion);
+        
+        
+        $medicos = $daoMedico->crearMedico($fechaContratacion, $especialidad, $valorConsulta, $PersonaID);
+        return $medicos;
+        
+        
+    }
 }

@@ -1,9 +1,6 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
+
+
+
 <html>
     <head>
         <meta charset="UTF-8">
@@ -11,13 +8,26 @@ and open the template in the editor.
     </head>
     <body>
         <?php
-        // put your code here
+        
+                 include_once __DIR__ . "/../../BACKEND/CONTROLLER/MedicoController.php";
+        
+         
+                 if($_SERVER["REQUEST_METHOD"] == "POST") {
+    if( isset($_POST["fecha_contratacion"]) && isset($_POST["especialidad"])&& isset($_POST["valor_consulta"]) && isset($_POST["persona_id"])) {
+
+              
+                MedicoController::agregarMedico($_POST["fecha_contratacion"], $_POST["especialidad"], $_POST["valor_consulta"], $_POST["persona_id"]);
+           
+           
+      
+    }  
+}
+        
         ?>
         
         <div>
-        	<p>ID de Medico</p>
-        	<input type="number" name="id_medico" required>
-        	
+            <form method="POST" action="RegistroMedicos.php">
+        	       	
         	<p>Fecha Contratacion</p>
                 <input type="date" name="fecha_contratacion" required>
         	
@@ -31,7 +41,8 @@ and open the template in the editor.
         	<p>Persona ID</p>
         	
                 <input type="number" name="persona_id" required>
-        	
+                <input type="submit" value="Agregar Medico">
+            </form>
         </div>
     </body>
 </html>

@@ -49,6 +49,31 @@ class AtencionDAO {
         
     }
     
+    public function getAtencionJSON($idAtencion){
+      
+        /* @var $atencion Atencion  */
+        $atencion = null;
+        
+        $sentencia = $this->conexion->prepare("select * from ATENCION where id_atencion= :id_atencion");
+        $atencionID = $idAtencion;
+        $sentencia->bindParam(':id_atencion',$atencionID);
+        $sentencia->execute();
+        
+        while($registro = $sentencia->fetch()) {            
+            $atencion = new Atencion();
+            $atencion->setEstadoID($registro["Estado_ID"]);
+            $atencion->setFechaHora($registro["Fecha_Atencion"]);
+            $atencion->setIdAtencion($registro["ID_Atencion"]);
+            $atencion->setMedicoID($registro["Medico_ID"]);
+            $atencion->setPacienteID($registro["Paciente_ID"]);
+     
+   
+        }
+        return json_encode($atencion);
+        
+        
+    }
+    
     public function eliminarAtencion($idAtencion){
         $sentencia = $this->conexion->prepare("delete from atencion where id_atencion = :id_atencion");
         $sentencia->bindParam(":id_atencion",$idAtencion);

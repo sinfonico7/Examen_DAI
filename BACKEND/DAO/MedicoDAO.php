@@ -55,7 +55,20 @@ class MedicoDAO {
         
     }
     
-    public function crearMedico($idMedico,$fechaContratacion,$especialidad,$valorConsulta,$personaID){
+    public function crearMedico($fechaContratacion,$especialidad,$valorConsulta,$personaID){
+        
+      
+            $sentencia = $this->conexion->prepare("insert into medico (Fecha_Contratacion,id_especilidad,Valor_Consulta,ID_Persona)"
+                    . "values (:fecha,:especialidad,:valor,:id_persona)");
+            $sentencia->bindParam(':fecha',$fechaContratacion);
+            $sentencia->bindParam(':especialidad',$especialidad);
+            $sentencia->bindParam(':valor',$valorConsulta);
+            $sentencia->bindParam(':id_persona',$personaID);
+            
+            $sentencia->execute();
+            
+       
+      
         
     }
 }
