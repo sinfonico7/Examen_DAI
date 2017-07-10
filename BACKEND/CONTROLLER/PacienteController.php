@@ -40,6 +40,16 @@ class PacienteController {
         
         return null;
     }
+   
+     public static function getPacienteJSON ($pacienteID){
+        
+         $conexion = DBConnection::getConexion();
+        $daoPaciente = new PacienteDAO($conexion);
+        
+        
+        return $daoPaciente->getPacienteJSON($pacienteID);
+    }
+    
     
     public static function ModificarPaciente ($pacienteID,$fechaNacimiento,$sexo,$direccion,$telefono,$personaID){
         

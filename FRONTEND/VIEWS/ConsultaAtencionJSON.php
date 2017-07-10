@@ -3,5 +3,7 @@
         include_once __DIR__ . "/../../BACKEND/MODEL/Atencion.php";
         
         /*@var $atencion Atencion*/
-        echo AtencionController::getAtencionJSON("id");
+        
+        $id = $_GET["id"];
+        echo AtencionController::getAtencionJSON($id);
   ?>

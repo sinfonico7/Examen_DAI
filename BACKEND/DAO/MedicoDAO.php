@@ -21,8 +21,52 @@ class MedicoDAO {
         $this->conexion = $conexion;
     }
     
+     public function buscarMedicoPorIdJSON($idMedico){
+        
+        /* @var $medico Medico  */
+        $medico = null;
+        
+        $sentencia = $this->conexion->prepare("select * from medico where MedicoId = :id_medico");
+        $MedicoID = $idMedico;
+        $sentencia->bindParam(':id_medico',$MedicoID);
+        
+        $sentencia->execute();
+        
+        while($registro = $sentencia->fetch()) {            
+            $medico = new Medico();
+            $medico->setIdMedico($registro["MedicoId"]);
+            $medico->setFechaContratacion($registro["Fecha_Contratacion"]);
+            $medico->setEspecialidad($registro["id_especilidad"]);
+            $medico->setVlorConsulta($registro["Valor_Consulta"]);
+            $medico->setIdPersona($registro["ID_Persona"]);
+     
+   
+        }
+        return json_encode($medico);
+        
+    }
         
     public function buscarMedicoPorId($idMedico){
+        
+        /* @var $medico Medico  */
+        $medico = null;
+        
+        $sentencia = $this->conexion->prepare("select * from medico where MedicoId = :id_medico");
+        $MedicoID = $idMedico;
+        $sentencia->bindParam(':id_medico',$MedicoID);
+        $sentencia->execute();
+        
+        while($registro = $sentencia->fetch()) {            
+            $medico = new Medico();
+            $medico->setIdMedico($registro["MedicoId"]);
+            $medico->setFechaContratacion($registro["Fecha_Contratacion"]);
+            $medico->setEspecialidad($registro["id_especialidad"]);
+            $medico->setVlorConsulta($registro["Valor_Consulta"]);
+            $medico->setIdPersona($registro["ID_Persona"]);
+     
+   
+        }
+        return $medico;
         
     }
     

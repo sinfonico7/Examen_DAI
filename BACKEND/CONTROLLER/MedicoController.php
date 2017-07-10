@@ -34,4 +34,15 @@ class MedicoController {
         
         
     }
+    
+    public static function getMedicoJSON($idMedico) {
+         $conexion = DBConnection::getConexion();
+        $daoMedico = new MedicoDAO($conexion);
+        
+        
+        return $daoMedico->buscarMedicoPorIdJSON($idMedico);
+         
+        
+        
+    }
 }

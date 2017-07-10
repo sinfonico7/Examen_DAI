@@ -79,6 +79,30 @@ class PacienteDAO {
         return $pacientes;
     }
     
+    public function getPacienteJSON($idPaciente) {
+        
+          /*@var $paciente Paciente*/       
+        $sentencia = $this->conexion->prepare("select * from paciente where PacienteID = :pacienteID");
+         $sentencia->bindParam (':pacienteID',$idPaciente);
+        $sentencia->execute();
+        
+        while ($registro = $sentencia->fetch()) {
+            $paciente = new Paciente();
+            $paciente->setPacienteID($registro["PacienteID"]);
+            $paciente->setFechaNacimiento($registro["Fecha_Nacimiento"]);
+            $paciente->setSexo($registro["Sexo"]);
+            $paciente->setDireccion($registro["Direccion"]);
+            $paciente->setTelefono($registro["Telefono"]);
+            $paciente->setPersonaID($registro["ID_Persona"]);
+            
+            
+        }
+        return json_encode($paciente);
+        
+        
+        
+    }
+    
     public function modificarPaciente($idPaciente){
         
     }
